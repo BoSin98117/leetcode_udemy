@@ -39,4 +39,6 @@ Expand Around The Center Method
 
 Have our center both be the character we are iterating on AND the space in between each character.
 
+Time Complexity O(n^2) - Expanding a palindrome around its center could take up to O(n), and we do this for EACH CHARACTER.
+Space Complexity O(1)
 */
