@@ -46,6 +46,6 @@ module.exports = hasCycle;
 
 
 /*
-Time Complexity: O()
-Space Complexity: O()
+Time Complexity: O(n) - We traverse through the Linked List
+Space Complexity: O() - We always use two nodes, regardless of size of Linked List
 */
