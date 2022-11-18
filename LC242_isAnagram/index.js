@@ -39,6 +39,7 @@ function isAnagram(s, t) {
             return false;
             // If there is a tChar in sCharCounts then decrement it by 1.  We do this because sometimes there are duplicate characters in a string.  
         } else {
+            // 
             sCharCounts[tChar]--
         }
     }
