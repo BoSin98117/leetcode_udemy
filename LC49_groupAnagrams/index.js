@@ -35,6 +35,7 @@ function groupAnagrams(strs) {
         grouped[key].push(word);
     }
 
+    // OBJECT.VALUES(GROUPED) - If we pass in an OBJECT(GROUP), OBJECT.VALUES will return an ARRAY of the values in that object.  In this case, it will return an array of arrays.
     return Object.values(grouped);
 }
 
@@ -48,3 +49,5 @@ K log K = the SORT method
 
 Space Complexity: O(N K) - Data stored in our grouped Hash Table which is an object of arrays with key/value pairs
 */
+
+
