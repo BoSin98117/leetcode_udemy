@@ -50,5 +50,5 @@ module.exports = isAnagram;
 
 /*
 Time Complexity: O(n) 
-Space Complexity: O(1) - Our hash table will have a maximum of 26 key-value pairs.
+Space Complexity: O(1) - Our hash table will have a maximum of 26 key-value pairs because Leetcode will only pass in characters that are 'a - z' and they are LOWERCASE.
 */
