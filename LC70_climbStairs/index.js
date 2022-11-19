@@ -75,3 +75,38 @@ for (let i = 3; i <= n; i++) {
 }
 return second;
 */
+
+
+/*
+**************************************************************************************
+SPACE COMPLEXITY - O(1) because we created a FIRST and SECOND variable INSTEAD OF ARRAY
+**************************************************************************************
+var climbStairs = function (n) {
+    if (n === 1) {
+        return n;
+    }
+
+    let first = 1;
+    let second = 2;
+
+    for (let i = 3; i <= n; i++) {
+        const third = first + second;
+
+
+        console.log("first = " + first);
+        console.log("second = " + second);
+        console.log("third = " + third + "\n");
+
+        first = second;
+        second = third;
+
+        console.log("first = " + first);
+        console.log("second = " + second);
+        console.log("third = " + third + "\n\n");
+    }
+
+    return second;
+};
+
+console.log(climbStairs("7"));
+*/
