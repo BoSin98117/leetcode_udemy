@@ -21,31 +21,31 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
 
 
 const productExceptSelf = nums => {
-    // Output Array will be all 1's
-    let output = nums.map(n => 1);
-    // Set product to 1 initially
-    // This will be the accumulated value 
-    let product = 1;
+  // Output Array will be all 1's
+  let output = nums.map(n => 1);
+  // Set product to 1 initially
+  // This will be the accumulated value 
+  let product = 1;
 
-    // Multiply from the LEFT
-    for (let i = 0; i < nums.length; i++) {
-        output[i] = output[i] * product;
-        // Mulitply product by the current number at nums[i]
-        // Accumulated value of the LEFT
-        product = product * nums[i];
-    }
+  // Multiply from the LEFT
+  for (let i = 0; i < nums.length; i++) {
+    output[i] = output[i] * product;
+    // Mulitply product by the current number at nums[i]
+    // Accumulated value of the LEFT
+    product = product * nums[i];
+  }
 
-    // Reset product to 1
-    product = 1;
+  // Reset product to 1
+  product = 1;
 
-    // Multiply from the RIGHT
-    for (let j = nums.length - 1; j >= 0; j--) {
-        output[j] = output[j] * product;
-        // Accumulated value of the RIGHT
-        product = product * nums[j];
-    }
+  // Multiply from the RIGHT
+  for (let j = nums.length - 1; j >= 0; j--) {
+    output[j] = output[j] * product;
+    // Accumulated value of the RIGHT
+    product = product * nums[j];
+  }
 
-    return output;
+  return output;
 };
 
 module.exports = productExceptSelf;
@@ -56,19 +56,3 @@ Time Complexity: O(n) - There are for loop but NO NESTED FOR LOOP
 Space Complexity: O(1) - The OUTPUT ARRAY does not count as extra space for the purpose of space complexity analysis.
 */
 
-/*
-Input Array
-[1,2,3,4]
-
-left 
-[1,1,2,6]
-
-right 
-[24,12,4,1]
-
-left and right 
-  [1,1,2,6]
-X [24,12,4,1]
---------------
-  [24,12,8,6]
-*/
