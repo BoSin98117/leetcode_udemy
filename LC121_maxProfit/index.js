@@ -42,5 +42,5 @@ module.exports = maxProfit;
 
 /*
 Time Complexity: O(n) - We iterate through the input Array once
-Space Complexity: O(1) - 
+Space Complexity: O(1)
 */
