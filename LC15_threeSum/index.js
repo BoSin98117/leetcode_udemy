@@ -41,9 +41,11 @@ const threeSum = nums => {
         let left = i + 1;
         let right = nums.length - 1;
 
-        if (i > 0 && nums[i] === nums[i - 1]) {
+        if (nums[i] === nums[i - 1]) {
             continue;
         }
+
+        console.log("nums[i] = " + nums[i]);
 
         while (left < right) {
             if (nums[left] + nums[right] === target) {
