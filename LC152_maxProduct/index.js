@@ -29,8 +29,13 @@ function maxProduct(nums) {
     for (let i = 1; i < nums.length; i++) {
         const num = nums[i];
 
-        maxTillIndex[i] = Math.max(num, num * maxTillIndex[i - 1], num * minTillIndex[i - 1]);
-        minTillIndex[i] = Math.min(num, num * maxTillIndex[i - 1], num * minTillIndex[i - 1]);
+        maxTillIndex[i] = Math.max(num,
+            num * maxTillIndex[i - 1],
+            num * minTillIndex[i - 1]);
+
+        minTillIndex[i] = Math.min(num,
+            num * maxTillIndex[i - 1],
+            num * minTillIndex[i - 1]);
 
         max = Math.max(max, maxTillIndex[i]);
     }
