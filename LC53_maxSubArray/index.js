@@ -31,9 +31,9 @@ function maxSubArray(nums) {
     let max = nums[0];
 
     for (let i = 1; i < nums.length; i++) {
-        const num = numsk[i];
+        const num = nums[i];
         dp[i] = Math.max(num, num + dp[i - 1]);
-        max = Math.max(max, sum);
+        max = Math.max(max, dp[i]);
     }
 
     return max;
