@@ -55,6 +55,7 @@ function findMinIdx(rotatedSortedArr) {
     }
 }
 
+
 // Helper function for Binary Search
 function binarySearch(nums, target, left, right) {
     while (left <= right) {
