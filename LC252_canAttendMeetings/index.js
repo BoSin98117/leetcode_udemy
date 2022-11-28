@@ -18,6 +18,7 @@ const canAttendMeetings = intervals => {
     starts.sort((a, b) => a - b);
     ends.sort((a, b) => a - b);
 
+    // If the start of the second meeting is LESS THAN the end of the first meeting, then return false.
     for (let i = 0; i < starts.length; i++) {
         if (starts[i + 1] < ends[i]) return false;
     }
