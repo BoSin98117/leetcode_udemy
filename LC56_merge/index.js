@@ -42,6 +42,6 @@ module.exports = merge;
 
 
 /*
-Time Complexity: O(n log n) - Our solutin uses a Sorting Algorithm.
+Time Complexity: O(n log n) - Our solution uses a Sorting Algorithm.
 Space Complexity: O(1) - We sort the Input Array in place.
 */
