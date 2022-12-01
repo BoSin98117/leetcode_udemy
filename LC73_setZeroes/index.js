@@ -22,7 +22,7 @@ A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
 */
 
-
+// Modify the input matrix in place
 function setZeroes(matrix) {
     let firstColHasZero = false;
     let firstRowHasZero = false;
