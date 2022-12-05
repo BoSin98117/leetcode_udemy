@@ -26,7 +26,10 @@ const reverseList = head => {
     while (current) {
         let temp = current.next;
 
+        // Change the direction of the pointer
         current.next = prev;
+
+        // Move PREV and CURRENT up by 1
         prev = current;
         current = temp;
     }
