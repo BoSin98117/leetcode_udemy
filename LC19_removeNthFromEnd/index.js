@@ -24,6 +24,8 @@ The number of nodes in the list is sz.
 
 function removeNthFromEnd(head, n) {
     let dummyHead = { next: head };
+
+    // Create a SLOW and FAST pointer
     let slow = dummyHead;
     let fast = dummyHead;
 
