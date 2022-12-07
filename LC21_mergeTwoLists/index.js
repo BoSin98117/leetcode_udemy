@@ -25,9 +25,12 @@ Both list1 and list2 are sorted in non-decreasing order.
 
 
 function mergeTwoLists(l1, l2) {
+    // Create a dummyHead so that we can compensate for empty linked list or a linked list with only 1 node.  We do not need to write a bunch of If/ELSE statements to handle these cases.
     const dummyHead = { next: null };
+
     let tail = dummyHead;
 
+    // While both linked lists has not been exhausted yet.
     while (l1 && l2) {
         if (l1.val < l2.val) {
             tail.next = l1;
@@ -40,6 +43,7 @@ function mergeTwoLists(l1, l2) {
         }
     }
 
+    // Tail is equal to whichever list that still has nodes in it.
     tail.next = l1 || l2;
 
     return dummyHead.next;
