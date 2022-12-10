@@ -21,6 +21,7 @@ function maxDepth(root) {
     let maxDepth = 0;
 
     function dive(node, curentDepth) {
+        // If there are no node or null, we calculate our maxDepth
         if (!node) {
             maxDepth = Math.max(curentDepth - 1, maxDepth);
             return;
