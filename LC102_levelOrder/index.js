@@ -24,7 +24,7 @@ function levelOrder(root) {
     const res = [];
 
     function helper(node, depth) {
-        // If there are no nodes(null), then Return.
+        // If there are no nodes(null), then Return
         if (!node) return;
 
         // If our Res Array DOES NOT have the Subarray in it, then create the Subarray.
