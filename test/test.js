@@ -1,24 +1,46 @@
-function removeNthFromEnd(head, n) {
-    let dummyHead = { next: head };
-    let slow = dummyHead;
-    let fast = dummyHead;
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
 
-    // Move Fast N nodes ahead of Slow
-    for (let i = 1; i <= n; i++) {
-        fast = fast.next;
+
+function levelOrder(root) {
+    // Create an ARRAY to contain SUBARRAYS
+    const res = [];
+
+    function helper(node, depth) {
+        // If there are no nodes(null), then Return
+        if (!node) return;
+
+        // If our Res Array DOES NOT have the Subarray in it, then create the Subarray.
+        if (!res[depth]) {
+            // res[depth] - Res at index Depth = [] (empty Subarray)
+            res[depth] = [];
+        }
+
+        // Push the values into the Subarray.
+        res[depth].push(node.val);
+
+        console.log("depth = " + depth);
+
+        helper(node.left, depth + 1);
+        console.log("depth = " + depth);
+        helper(node.right, depth + 1);
+        console.log("depth = " + depth);
     }
 
-    // Move Fast and Slow up one node at a time until Fast is at the last node
-    while (fast.next) {
-        slow = slow.next;
-        fast = fast.next;
-    }
-    // After While Loop completes, Fast will be at the last node.
-    // Connect Slow to the node that is 2 nodes away, deleting the node Next to it.
-    slow.next = slow.next.next;
+    // We use '0' because array indices start at 0.
+    helper(root, 0);
 
-    // Return the Head of the linked list with the node removed. 
-    return dummyHead.next;
+    return res;
 }
 
-console.log(removeNthFromEnd([1, 2, 3, 4, 5, 6, 7, 8], 4));
+console.log(levelOrder([3, 9, 20, null, null, 15, 7]));
