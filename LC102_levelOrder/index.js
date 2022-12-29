@@ -51,4 +51,5 @@ module.exports = levelOrder;
 /*
 Time Complexity: O(n) - We traverse through every Node in the Tree.
 Space Complexity: O(1)
+Space Complexity: O(n) - if the interviewer says recursive calls counts as space complexity.
 */
