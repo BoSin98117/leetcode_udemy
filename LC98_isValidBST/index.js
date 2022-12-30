@@ -34,8 +34,7 @@ function isValidBST(root) {
         }
 
         // As we traverse down to the LEFT, set MAX to the previous value (node.val)
-        // Every value has to be SMALLER than the previous.
-        helper(node.left, min, node.val);
+        // Every value has to be SMALLER than the previous..
         // As we traverse down to the RIGHT, set MIN to the previous value (node.val)
         // Every value has to be LARGER than the previous.
         helper(node.right, node.val, max);
