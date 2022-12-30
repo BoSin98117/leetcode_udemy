@@ -25,7 +25,7 @@ p != q
 p and q will exist in the BST.
 */
 
-
+// Iteratively Approach
 function lowestCommonAncestor(root, p, q) {
     const pVal = p.val;
     const qVal = q.val;
