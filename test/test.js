@@ -1,46 +1,35 @@
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number[][]}
- */
+function lengthOfLongestSubstring(s) {
+    // Create Object that contains all characters of string at the index they are located
+    let windowCharsMap = {};
 
+    let windowStart = 0;
+    let maxLength = 0;  // Return the longest substring.
 
-function levelOrder(root) {
-    // Create an ARRAY to contain SUBARRAYS
-    const res = [];
+    for (let i = 0; i < s.length; i++) {
+        // endChar will be character that we are currently on.
+        const endChar = s[i];
 
-    function helper(node, depth) {
-        // If there are no nodes(null), then Return
-        if (!node) return;
+        console.log("s[i] = " + s[i]);
 
-        // If our Res Array DOES NOT have the Subarray in it, then create the Subarray.
-        if (!res[depth]) {
-            // res[depth] - Res at index Depth = [] (empty Subarray)
-            res[depth] = [];
+        // See if the current index we are on has not been found in the sliding window
+        // If it is found, then it's a duplicate
+        if (windowCharsMap[endChar] >= windowStart) {
+            // If there is a duplicate value found, then we create a new window where it would start at the next character.
+            windowStart = windowCharsMap[endChar] + 1;
         }
 
-        // Push the values into the Subarray.
-        res[depth].push(node.val);
+        // If a duplicate is found, update the value of the index of that character
+        windowCharsMap[endChar] = i;
 
-        console.log("depth = " + depth);
+        console.log("windowStart = " + windowStart);
+        console.log("windowCharsMap[endChar] = " + windowCharsMap[endChar]);
+        console.log(windowCharsMap);
+        console.log("\n");
 
-        helper(node.left, depth + 1);
-        console.log("depth = " + depth);
-        helper(node.right, depth + 1);
-        console.log("depth = " + depth);
+        // i = end of window (endChar) | + 1 = array indices start at 0 so we add 1 to compensate.  i - windowStart + 1 = the sliding window
+        maxLength = Math.max(maxLength, i - windowStart + 1);
     }
-
-    // We use '0' because array indices start at 0.
-    helper(root, 0);
-
-    return res;
+    return maxLength;
 }
 
-console.log(levelOrder([3, 9, 20, null, null, 15, 7]));
+console.log(lengthOfLongestSubstring("abcabcbb"));
