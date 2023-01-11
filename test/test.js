@@ -1,35 +1,23 @@
-function lengthOfLongestSubstring(s) {
-    // Create Object that contains all characters of string at the index they are located
-    let windowCharsMap = {};
+function groupAnagrams(strs) {
+    let grouped = {};
+    for (let i = 0; i < strs.length; i++) {
+        const word = strs[i];
+        const key = word.split('').sort().join('');
 
-    let windowStart = 0;
-    let maxLength = 0;  // Return the longest substring.
+        if (!grouped[key]) {
+            grouped[key] = [];
+        };
 
-    for (let i = 0; i < s.length; i++) {
-        // endChar will be character that we are currently on.
-        const endChar = s[i];
+        console.log("Key = " + key);
 
-        console.log("s[i] = " + s[i]);
+        console.log("Word = " + word + "\n");
 
-        // See if the current index we are on has not been found in the sliding window
-        // If it is found, then it's a duplicate
-        if (windowCharsMap[endChar] >= windowStart) {
-            // If there is a duplicate value found, then we create a new window where it would start at the next character.
-            windowStart = windowCharsMap[endChar] + 1;
-        }
-
-        // If a duplicate is found, update the value of the index of that character
-        windowCharsMap[endChar] = i;
-
-        console.log("windowStart = " + windowStart);
-        console.log("windowCharsMap[endChar] = " + windowCharsMap[endChar]);
-        console.log(windowCharsMap);
-        console.log("\n");
-
-        // i = end of window (endChar) | + 1 = array indices start at 0 so we add 1 to compensate.  i - windowStart + 1 = the sliding window
-        maxLength = Math.max(maxLength, i - windowStart + 1);
+        grouped[key].push(word);
     }
-    return maxLength;
+
+    // OBJECT.VALUES(GROUPED) - If we pass in an OBJECT(GROUP), OBJECT.VALUES will return an ARRAY of the values in that object.  In this case, it will return an array of arrays.
+    return Object.values(grouped);
 }
 
-console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]
+));
