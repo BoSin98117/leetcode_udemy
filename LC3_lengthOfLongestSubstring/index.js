@@ -24,7 +24,7 @@ function lengthOfLongestSubstring(s) {
         // If a duplicate is found, update the value of the index of that character
         windowCharsMap[endChar] = i;
 
-        // i = end of window (endChar) | + 1 = array indices start at 0 so we add 1 to compensate.  i - windowStart + 1 = the sliding window
+        // i = end of window (endChar) | + 1 = array indices start at 0 so we add 1 to compensate.  i - windowStart + 1 = the sliding window.
         maxLength = Math.max(maxLength, i - windowStart + 1);
     }
     return maxLength;
