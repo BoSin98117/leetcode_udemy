@@ -1,23 +1,18 @@
-function groupAnagrams(strs) {
-    let grouped = {};
-    for (let i = 0; i < strs.length; i++) {
-        const word = strs[i];
-        const key = word.split('').sort().join('');
+const isValid = s => {
+    let stack = [];
+    let pairsHashMap = { "(": ")", "{": "}", "[": "]" };
 
-        if (!grouped[key]) {
-            grouped[key] = [];
-        };
+    for (let i = 0; i < s.length; i++) {
+        let char = s[i];
 
-        console.log("Key = " + key);
-
-        console.log("Word = " + word + "\n");
-
-        grouped[key].push(word);
+        if (pairsHashMap[char]) {
+            stack.push(char);
+        } else if (pairsHashMap[stack.pop()] !== char) {
+            return false;
+        }
     }
 
-    // OBJECT.VALUES(GROUPED) - If we pass in an OBJECT(GROUP), OBJECT.VALUES will return an ARRAY of the values in that object.  In this case, it will return an array of arrays.
-    return Object.values(grouped);
-}
+    return stack.length === 0;
+};
 
-console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]
-));
+console.log(isValid("()[]{}"));

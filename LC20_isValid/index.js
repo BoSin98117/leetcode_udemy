@@ -45,6 +45,6 @@ const isValid = s => {
 module.exports = isValid;
 
 /*
-Time Complexity: O(n) - We iterate through the input string just once.
-Space Complexity: O(n) - In worst case, stack is same length as input string.
+Time Complexity: O(n) - We iterate through the input string just once
+Space Complexity: O(n) - In worst case, stack is same length as input string
 */
