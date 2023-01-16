@@ -40,7 +40,7 @@ function rob(nums) {
         */
         maxLootAtNth.push(Math.max(nums[i] + maxLootAtNth[i - 2], maxLootAtNth[i - 1]));
     }
-    // return last item of maxLoot array 
+    // return last item of maxLoot array.
     return maxLootAtNth.pop();
 }
 

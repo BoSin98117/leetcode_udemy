@@ -1,6 +1,6 @@
 const isValid = s => {
     let stack = [];
-    let pairsHashMap = { "(": ")", "{": "}", "[": "]" };
+    let pairsHashMap = { "(": ")", "A": "}", "[": "]" };
 
     for (let i = 0; i < s.length; i++) {
         let char = s[i];
