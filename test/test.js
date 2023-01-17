@@ -1,25 +1,18 @@
-const isValid = s => {
-    let stack = [];
-    let pairsHashMap = { "(": ")", "A": "}", "[": "]" };
+// Dynamic Programming
+function canJump(nums) {
+    // Create an array with the same length as the input array and fill all indices with FALSE
+    let dpPositions = new Array(nums.length).fill(false);
+    // Set the first index to TRUE
+    dpPositions[0] = true;
 
-    for (let i = 0; i < s.length; i++) {
-        let char = s[i];
-
-        console.log("char = " + char);
-
-        if (pairsHashMap[char]) {
-            stack.push(char);
-
-            console.log("pairsHashMap[char] = " + pairsHashMap[char]);
-        } else if (pairsHashMap[stack.pop()] !== char) {
-            return false;
+    for (let j = 1; j < nums.length; j++) {
+        for (let i = 0; i < j; i++) {
+            if (dpPositions[i] && i + nums[i] >= j) {
+                dpPositions[j] = true;
+                // Once the i step can reach the j step, we don't need to proceed.  Just break out.  This makes the code more efficient.
+                break;
+            }
         }
-
-        console.log("stack = " + stack + "\n");
-        // console.log("stack.pop = " + pairsHashMap[stack.pop()] + "\n");
     }
-
-    return stack.length === 0;
-};
-
-console.log(isValid("([{}])"));
+    return dpPositions[dpPositions.length - 1];
+}
