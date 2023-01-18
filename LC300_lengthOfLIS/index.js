@@ -27,6 +27,8 @@ function lengthOfLIS(nums) {
     let dpSubsequence = new Array(nums.length).fill(1);
     let maxSoFar = 1;
 
+    console.log("dpsequence = " + dpSubsequence);
+
     for (let j = 1; j < nums.length; j++) {
         for (let i = 0; i < j; i++) {
             if (nums[j] > nums[i]) {
