@@ -20,6 +20,7 @@ Constraints:
 
 
 const containsDuplicate = nums => {
+    // Use a  HashMap for O(1) lookup time.
     const visitedNums = {};
 
     for (let i = 0; i < nums.length; i++) {
