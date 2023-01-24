@@ -38,6 +38,7 @@ function uniquePaths(m, n) {
         dpMatrix[0][col] = 1;
     }
 
+    // fill up the dpMatrix
     for (let row = 1; row < n; row++) {
         for (let col = 1; col < m; col++) {
             dpMatrix[row][col] = dpMatrix[row][col - 1] + dpMatrix[row - 1][col];
