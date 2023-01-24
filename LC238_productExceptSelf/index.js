@@ -19,7 +19,7 @@ Constraints:
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 */
 
-
+// 
 const productExceptSelf = nums => {
   // Output Array will be all 1's
   let output = nums.map(n => 1);
