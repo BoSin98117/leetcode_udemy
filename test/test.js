@@ -1,21 +1,37 @@
-function lengthOfLIS(nums) {
-    if (nums.length === 0) { return 0; }
+const productExceptSelf = nums => {
+    // Output Array will be all 1's
+    let output = nums.map(n => 1);
+    // Set product to 1 initially
+    // This will be the accumulated value 
+    let product = 1;
 
-    let dpSubsequence = new Array(nums.length).fill(1);
-    let maxSoFar = 1;
+    console.log("nums   = " + nums);
+    console.log("output = " + output + "  ***OUTPUT INITIAL***\n");
 
-    console.log("dpsequence = " + dpSubsequence);
-    console.log("nums = " + nums);
-
-    for (let j = 1; j < nums.length; j++) {
-        for (let i = 0; i < j; i++) {
-            if (nums[j] > nums[i]) {
-                dpSubsequence[j] = Math.max(dpSubsequence[i] + 1, dpSubsequence[j]);
-            }
-        }
-        maxSoFar = Math.max(maxSoFar, dpSubsequence[j]);
+    // Multiply from the LEFT
+    for (let i = 0; i < nums.length; i++) {
+        output[i] = output[i] * product;
+        // Mulitply product by the current number at nums[i]
+        // Accumulated value of the LEFT
+        product = product * nums[i];
     }
-    return maxSoFar;
-}
 
-console.log(lengthOfLIS([10, 9, 2, 5, 9, 12]));
+    console.log("nums   = " + nums);
+    console.log("output = " + output + "   ***OUTPUT LEFT***\n");
+
+    // Reset product to 1
+    product = 1;
+
+    // Multiply from the RIGHT
+    for (let j = nums.length - 1; j >= 0; j--) {
+        output[j] = output[j] * product;
+        // Accumulated value of the RIGHT
+        product = product * nums[j];
+    }
+
+    console.log("***Final OUTPUT RIGHT***")
+
+    return output;
+};
+
+console.log(productExceptSelf([1, 2, 3, 4]));

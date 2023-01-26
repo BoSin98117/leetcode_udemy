@@ -35,6 +35,7 @@ function maxArea(height) {
         const currentArea = Math.min(height[start], height[end]) * (end - start);
         maxArea = Math.max(currentArea, maxArea);
 
+        // Move START up by one and END down by one after each iteration.
         if (height[start] < height[end]) {
             start++;
         } else {
