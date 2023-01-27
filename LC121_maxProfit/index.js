@@ -21,7 +21,7 @@ Constraints:
 0 <= prices[i] <= 104
 */
 
-
+// This will solve our problem with only 1 iteration
 var maxProfit = function (prices) {
     let maxProfit = 0;
     let cheapestPrice = prices[0];
