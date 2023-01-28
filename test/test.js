@@ -1,37 +1,26 @@
-const productExceptSelf = nums => {
-    // Output Array will be all 1's
-    let output = nums.map(n => 1);
-    // Set product to 1 initially
-    // This will be the accumulated value 
-    let product = 1;
+function twoSum(arr, target) {
+    // Create Hash Table Object to store each element that is visited from Input Array
+    const numsVisited = {};
+    // Create an array to return the indices of the values that add up to Target
+    const res = [];
 
-    console.log("nums   = " + nums);
-    console.log("output = " + output + "  ***OUTPUT INITIAL***\n");
+    for (let i = 0; i < arr.length; i++) {
+        const num = arr[i];
+        const complement = target - num;
+        // UNDEFINED - we make it undefined bc Javascript see's 0 as a falsy value.  So it we push to res[], the first index is 0, and Javascript will consider it falsy.  Making it undefined will resolve this.
+        if (numsVisited[complement] !== undefined) {
+            res.push(numsVisited[complement]);
+            res.push(i);
 
-    // Multiply from the LEFT
-    for (let i = 0; i < nums.length; i++) {
-        output[i] = output[i] * product;
-        // Mulitply product by the current number at nums[i]
-        // Accumulated value of the LEFT
-        product = product * nums[i];
+            console.log("i = " + i);
+            console.log("numsVisited[complement] = " + numsVisited[complement]);
+        }
+        numsVisited[num] = i;
+        console.log(numsVisited);
+        console.log("res[] = " + res);
     }
 
-    console.log("nums   = " + nums);
-    console.log("output = " + output + "   ***OUTPUT LEFT***\n");
+    return res;
+}
 
-    // Reset product to 1
-    product = 1;
-
-    // Multiply from the RIGHT
-    for (let j = nums.length - 1; j >= 0; j--) {
-        output[j] = output[j] * product;
-        // Accumulated value of the RIGHT
-        product = product * nums[j];
-    }
-
-    console.log("***Final OUTPUT RIGHT***")
-
-    return output;
-};
-
-console.log(productExceptSelf([1, 2, 3, 4]));
+console.log(twoSum([11, 2, 7, 15], 9));
