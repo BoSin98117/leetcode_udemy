@@ -27,13 +27,12 @@ Time Complexity: O(n) - 1 for loop
 Space Complexity: O(n) - dp = [nums[0]] - we allocate a dp ARRAY
 */
 function maxSubArray(nums) {
-    let dp = [nums[0]];
     let max = nums[0];
 
     for (let i = 1; i < nums.length; i++) {
         const num = nums[i];
-        dp[i] = Math.max(num, num + dp[i - 1]);
-        max = Math.max(max, dp[i]);
+        nums[i] = Math.max(num, num + nums[i - 1]);
+        max = Math.max(max, nums[i]);
     }
 
     return max;
