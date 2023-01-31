@@ -41,6 +41,7 @@ const threeSum = nums => {
         let left = i + 1;
         let right = nums.length - 1;
 
+        // Prevent duplicates
         if (nums[i] === nums[i - 1]) {
             continue;
         }
