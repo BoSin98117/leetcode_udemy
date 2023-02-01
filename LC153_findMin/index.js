@@ -36,16 +36,21 @@ function findMin(nums) {
     let left = 0;
     let right = nums.length - 1;
 
+    // If there is only 1 item, then return that item
     if (nums.length === 1) {
         return nums[0];
     }
 
+    // If the 1st item is less than the last item, then return the 1st item because the array is sorted.
     if (nums[left] < nums[right]) {
         return nums[left];
     }
 
+    // Else, we have a rotated sorted array
+    // Perform Binary Search to locate the minimum value.
     while (left <= right) {
         const mid = Math.floor((left + right) / 2);
+
         const leftVal = nums[left];
         const midVal = nums[mid];
         const leftOfMid = nums[mid - 1];
