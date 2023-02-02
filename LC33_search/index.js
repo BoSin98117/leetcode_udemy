@@ -74,6 +74,7 @@ function binarySearch(nums, target, left, right) {
 function search(nums, target) {
     const minIdx = findMinIdx(nums);
 
+    // We will get the index number
     const left = binarySearch(nums, target, 0, minIdx - 1);
     const right = binarySearch(nums, target, minIdx, nums.length - 1);
 
