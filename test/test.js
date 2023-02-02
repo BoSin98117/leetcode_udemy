@@ -1,26 +1,31 @@
-function twoSum(arr, target) {
-    // Create Hash Table Object to store each element that is visited from Input Array
-    const numsVisited = {};
-    // Create an array to return the indices of the values that add up to Target
-    const res = [];
+const eraseOverlapIntervals = intervals => {
+    if (intervals.length === 0) return 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        const num = arr[i];
-        const complement = target - num;
-        // UNDEFINED - we make it undefined bc Javascript see's 0 as a falsy value.  So it we push to res[], the first index is 0, and Javascript will consider it falsy.  Making it undefined will resolve this.
-        if (numsVisited[complement] !== undefined) {
-            res.push(numsVisited[complement]);
-            res.push(i);
+    let count = 0;
+    intervals.sort(function (a, b) { return a[0] - b[0] });
+    let end = intervals[0][1];
 
-            console.log("i = " + i);
-            console.log("numsVisited[complement] = " + numsVisited[complement]);
+    console.log("Sorted intervals array = " + intervals);
+
+    for (let i = 1; i < intervals.length; i++) {
+        const interval = intervals[i];
+        const intervalStart = interval[0];
+        const intervalEnd = interval[1];
+
+        console.log("intervalStart = " + intervalStart);
+        console.log("intervalEnd = " + intervalEnd);
+
+        if (intervalStart < end) {
+            count++
+            end = Math.min(intervalEnd, end);
+            console.log("count = " + count + "\n");
+        } else {
+            end = intervalEnd;
+            console.log("end = " + end + "\n");
         }
-        numsVisited[num] = i;
-        console.log(numsVisited);
-        console.log("res[] = " + res);
     }
 
-    return res;
-}
+    return count;
+};
 
-console.log(twoSum([11, 2, 7, 15], 9));
+console.log(eraseOverlapIntervals([[1, 2], [2, 3], [3, 4], [1, 3]]));

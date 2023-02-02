@@ -35,7 +35,7 @@ const eraseOverlapIntervals = intervals => {
         const intervalStart = interval[0];
         const intervalEnd = interval[1];
 
-        // 
+        // If the start of current interval is less than the end of previous interval, then there are no overlapping.
         if (intervalStart < end) {
             count++
             end = Math.min(intervalEnd, end);
