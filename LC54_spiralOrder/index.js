@@ -29,6 +29,7 @@ function spiralOrder(matrix) {
     let right = matrix[0].length - 1;
     let dir = 'right';
 
+    // Loop over the input matrix
     while (top <= bottom && left <= right) {
         if (dir === 'right') {
             // Right = Left -> Right
