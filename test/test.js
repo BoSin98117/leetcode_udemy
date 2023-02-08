@@ -1,31 +1,42 @@
-const eraseOverlapIntervals = intervals => {
-    if (intervals.length === 0) return 0;
+function exist(board, word) {
+    let found = false;
 
-    let count = 0;
-    intervals.sort(function (a, b) { return a[0] - b[0] });
-    let end = intervals[0][1];
+    console.log(board);
 
-    console.log("Sorted intervals array = " + intervals);
+    for (let row = 0; row < board.length; row++) {
+        for (let col = 0; col < board[0].length; col++) {
 
-    for (let i = 1; i < intervals.length; i++) {
-        const interval = intervals[i];
-        const intervalStart = interval[0];
-        const intervalEnd = interval[1];
+            console.log("board[" + row + "][" + col + "] = " + board[row][col]);
 
-        console.log("intervalStart = " + intervalStart);
-        console.log("intervalEnd = " + intervalEnd);
-
-        if (intervalStart < end) {
-            count++
-            end = Math.min(intervalEnd, end);
-            console.log("count = " + count + "\n");
-        } else {
-            end = intervalEnd;
-            console.log("end = " + end + "\n");
+            // if (board[row][col] === word[0]) {
+            //     dfs(row, col, 0, word);
+            // }
         }
     }
 
-    return count;
-};
+    function dfs(row, col, count, word) {
+        if (count === word.length) {
+            found = true;
+            return;
+        }
 
-console.log(eraseOverlapIntervals([[1, 2], [2, 3], [3, 4], [1, 3]]));
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || board[row][col] !== word[count] || found) {
+            return;
+        }
+
+        let temp = board[row][col];
+        board[row][col] = "";
+
+        // Traverse cells top, bottom, left, right
+        dfs(row + 1, col, count + 1, word);
+        dfs(row - 1, col, count + 1, word);
+        dfs(row, col + 1, count + 1, word);
+        dfs(row, col - 1, count + 1, word);
+
+        board[row][col] = temp;
+    }
+
+    return found;
+}
+
+console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCCED"));
