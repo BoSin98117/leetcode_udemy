@@ -43,7 +43,7 @@ function mergeTwoLists(l1, l2) {
         }
     }
 
-    // Tail is equal to whichever list that still has nodes in it.
+    // Tail is equal to whichever list that still has nodes in it
     tail.next = l1 || l2;
 
     return dummyHead.next;

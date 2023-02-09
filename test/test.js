@@ -1,42 +1,26 @@
-function exist(board, word) {
-    let found = false;
+function removeNthFromEnd(head, n) {
+    let dummyHead = { next: head };
 
-    console.log(board);
+    // Create a SLOW and FAST pointer
+    let slow = dummyHead;
+    let fast = dummyHead;
 
-    for (let row = 0; row < board.length; row++) {
-        for (let col = 0; col < board[0].length; col++) {
-
-            console.log("board[" + row + "][" + col + "] = " + board[row][col]);
-
-            // if (board[row][col] === word[0]) {
-            //     dfs(row, col, 0, word);
-            // }
-        }
+    // Move Fast N nodes ahead of Slow
+    for (let i = 1; i <= n; i++) {
+        fast = fast.next;
     }
 
-    function dfs(row, col, count, word) {
-        if (count === word.length) {
-            found = true;
-            return;
-        }
-
-        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || board[row][col] !== word[count] || found) {
-            return;
-        }
-
-        let temp = board[row][col];
-        board[row][col] = "";
-
-        // Traverse cells top, bottom, left, right
-        dfs(row + 1, col, count + 1, word);
-        dfs(row - 1, col, count + 1, word);
-        dfs(row, col + 1, count + 1, word);
-        dfs(row, col - 1, count + 1, word);
-
-        board[row][col] = temp;
+    // Move Fast and Slow up one node at a time until Fast is at the last node
+    while (fast.next) {
+        slow = slow.next;
+        fast = fast.next;
     }
+    // After While Loop completes, Fast will be at the last node.
+    // Connect Slow to the node that is 2 nodes away, deleting the node Next to it.
+    slow.next = slow.next.next;
 
-    return found;
+    // Return the Head of the linked list with the node removed. 
+    return dummyHead.next;
 }
 
-console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCCED"));
+console.log(removeNthFromEnd([1, 2, 3, 4, 5], 2));
