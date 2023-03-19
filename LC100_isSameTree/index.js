@@ -37,7 +37,7 @@ function isSameTree(p, q) {
             return;
         }
 
-        // Check the NODE to the LEFT and RIGHT
+        // Check the NODE to the LEFT and RIGHT//
         checkSameNode(p.left, q.left);
         checkSameNode(p.right, q.right);
     }
